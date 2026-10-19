@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    text-align: center;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: #fff;
+    background: linear-gradient(135deg, #5992c6, #3b4cca 55%, #7b4fd6);
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+/* soft blurred colour blobs behind the glass */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 45vmin;
+    height: 45vmin;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: -1;
+}
+
+body::before {
+    background: #ff7ad9;
+    top: 8%;
+    left: 10%;
+    opacity: 0.55;
+}
+
+body::after {
+    background: #4fe0ff;
+    bottom: 8%;
+    right: 10%;
+    opacity: 0.55;
+}
+
+.game-container {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* glass panel */
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5vmin;
+    width: 64vmin;
+    height: 64vmin;
+    padding: 2.5vmin;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 9vmin;
+    font-weight: 300;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 1rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.box:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.28);
+    transform: scale(1.04);
+}
+
+.box:disabled {
+    cursor: not-allowed;
+}
+
+#reset-button {
+    margin-top: 1rem;
+    padding: 0.7rem 2rem;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 2rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background 0.2s;
+}
+
+#reset-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#winner {
+    margin-top: 1.5vmin;
+    font-size: 5vmin;
+    font-weight: 300;
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.hide {
+    display: none;
+}
